@@ -123,3 +123,19 @@ Route::get('/gracias', function () {
 Route::get('/cancelado', function () {
     return view('cancelado'); // Vista de cancelación
 })->name('rutaCancelado');
+
+
+
+
+
+
+use Illuminate\Support\Facades\DB;
+
+Route::get('/test-db', function () {
+    try {
+        DB::connection()->getPdo();
+        return '✅ Conexión exitosa a la base de datos.';
+    } catch (\Exception $e) {
+        return '❌ Error de conexión: ' . $e->getMessage();
+    }
+});
